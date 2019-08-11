@@ -32,7 +32,7 @@ if (isset($_POST["btnOK"])) {
         $user->exec("set names utf8");
         //設定$select要執行的SQL語法
         //按照使用者輸入的帳號找出對應的帳號和密碼
-        $select = "select ud_name,ud_account,ud_pwd from user_data where ud_account='$_SESSION[userAccount]'";
+        $select = "select ud_id,ud_name,ud_account,ud_pwd from user_data where ud_account='$_SESSION[userAccount]'";
         // echo $select;
         // exit();
         //執行語法
@@ -40,6 +40,9 @@ if (isset($_POST["btnOK"])) {
         $result = $user->fetch();
         //用seesion傳遞使用者姓名
         $_SESSION["userName"] = $result["ud_name"];
+        $_SESSION["id"]= $result["ud_id"];
+        // echo $_SESSION["id"];
+        // exit();
         //用seesion傳遞帳號密碼
         // echo "帳號是".$result["ud_account"]."<br>";
         // echo "密碼是".$result["ud_pwd"]."<br>";
